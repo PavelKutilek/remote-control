@@ -5,22 +5,18 @@ basic.showString("MB remote")
 basic.showNumber(1)
 basic.forever(function () {
     if (pins.analogReadPin(AnalogPin.P0) > 600) {
-        basic.showArrow(ArrowNames.East)
         radio.sendValue("S", 1)
     } else if (pins.analogReadPin(AnalogPin.P0) < 400) {
-        basic.showArrow(ArrowNames.West)
         radio.sendValue("S", 2)
     } else {
         radio.sendValue("S", 0)
     }
     if (pins.analogReadPin(AnalogPin.P1) > 600) {
-        basic.showArrow(ArrowNames.North)
         radio.sendValue("D", 1)
     } else if (pins.analogReadPin(AnalogPin.P1) < 400) {
-        basic.showArrow(ArrowNames.South)
         radio.sendValue("D", 2)
     } else {
-        radio.sendValue("D", 2)
+        radio.sendValue("D", 0)
     }
     Tlacraw = pins.analogReadPin(AnalogPin.P2)
     if (Tlacraw < 256) {
